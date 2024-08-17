@@ -1,6 +1,7 @@
 # 手写数字识别的神经网络，以2层神经网络为对象
 import sys, os
 
+from deepLearning import sigmoid, softmax
 from deepLearning.training import cross_entropy_error
 sys.path.append(os.pardir)
 import numpy as np

@@ -1,6 +1,5 @@
 import numpy as np
 from dataset.minist import load_minist
-from twoLayerNet import TwoLayerNet
 
 (x_train, t_train), (x_test, t_test) = load_minist(normalize=True, one_hot_label=True)
 
@@ -39,6 +38,7 @@ import numpy as np
 from dataset.minist import load_minist
 from twoLayerNet import TwoLayerNet
 
+# 读入数据
 (x_train, t_train), (x_test, t_test) = load_minist(normalize=True, one_hot_label=True)
 
 train_loss_list = []
@@ -61,8 +61,10 @@ for i in range(iters_num):
     x_batch = x_train[batch_mask]
     t_batch = t_train[batch_mask]
 
-    # 计算梯度
+    # 使用微分差值法计算梯度
     grad = network.numerical_gradient(x_batch, t_batch)
+    # 使用误差反向传播法求梯度
+    # grad = network.gradient(x_batch, t_batch) 
     # 根据计算出的梯度更新参数，使得整体的效果朝着损失函数的值越来越小的方向发展
     # 学习的过程就是不断优化的过程
     for key in ('w1', 'b1', 'W2', 'b2'):
